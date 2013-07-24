@@ -25,7 +25,7 @@ import org.junit.Test;
  * JAYS EXAMPLE JUNIT TEST
 * Marty: Write your unit tests like this:
 *
-* 1) Call the function in the OTHER class. (i.e. bwt.java)
+* 1) Call the function in the OTHER class. (i.e. bwt.method.java)
 * 2) Store the return value in a variable (i.e. aString)
 * 3) Assert something about that value (i.e. assertTrue, assertFalse).
 
@@ -40,47 +40,28 @@ Assert.assertFalse(1==0+2);
 }
 */
 
+/**
+ * Creates a test suite containing all Unit Tests
+ * for this component.
+ *
+ * @return A test suite containing all unit tests.
+ */
 public class bwtTest extends TestCase 
 {
-	/**
-	 * Creates a test suite containing all Unit Tests
-	 * for this component.
-	 *
-	 * @return A test suite containing all unit tests.
-	 */
-	//public static Test suite()
+/**
 	public static void main(String[] args) // use main for testing then depricat
-	
 	{
-		//TestSuite suite = new TestSuite();
 		
-		// Add accuracy, failure,  tests here. use expected parameters and return values
-		// suite.addTestSuite(TestClass.class);
 		
-		//return suite;	
 	}
-	
-	public class testBWT 
-	{
-		bwt bwttest = new bwt();
-		BWTCompressor compressortest = new BWTCompressor();
-		//assertEquals("zGTCGaACT3", BWTCompressor("GGATCCTTT");
-		// test to check for input sequence
-		
-		
-		
-		
-		
-		// test to check sequence length
-		@Test
-		public void testCalcSequenceLength()
+*/	
+	// test to check sequence length
+	@Test	
+	public void testCalcSequenceLength()
 		{		
 			Assert.assertTrue(1==1); //always passes 
 			Assert.assertTrue("GGATCCTTT".length()==9); //compare string length 
 			Assert.assertTrue("aGGATCCTTTz".length()==11); //compare string alength
-			
-			//Assert.assertTrue("GGATCCTTT".sequenceRotateArray([1]) =="zaGGATCCTTT");
-			//Assert.assertTrue(sequenceRotateArray("GGATCCTTT", 11) =="zaGGATCCTTT");
 			Assert.assertFalse(1==0); //always passes 	
 		}
 		
@@ -88,22 +69,60 @@ public class bwtTest extends TestCase
 		@Test
 		public void testSequenceAppend()
 		{
-		String aString = bwt.sequenceAppend("GGATCCTTT");
-		Assert.assertEquals(aString,"GGATCCTTT");
-		Assert.assertTrue(aString.equals("aGGATCCTTTz"));
-		Assert.assertFalse(1==0+2);
+			String appendSeq = bwt.sequenceAppend("GGATCCTTT");
+			Assert.assertEquals(appendSeq,"aGGATCCTTTz");
+			Assert.assertTrue(appendSeq.equals("aGGATCCTTTz"));
+			Assert.assertFalse(1==0+2);
 		}
 		
 		// test to check for sequence rotation of first array element
+		@Test
+		public void testSequenceRotation()
+		{
+			String [] rotateSeq = bwt.sequenceRotateArray("aGGATCCTTTz", 11);
+			Assert.assertEquals(rotateSeq[1],"zaGGATCCTTT");
+			Assert.assertTrue(rotateSeq[1].equals("zaGGATCCTTT"));
+			Assert.assertEquals(rotateSeq[3],"TTzaGGATCCT");
+			Assert.assertTrue(rotateSeq[3].equals("TTzaGGATCCT"));
+			Assert.assertEquals(rotateSeq[10],"GGATCCTTTza");
+			Assert.assertTrue(rotateSeq[10].equals("GGATCCTTTza"));
+			Assert.assertFalse(1==0+2);
+		}
 		
-		// test to check for sequence sore of first  and last array element
+		// test to check for sequence sort of first  and last array element
+		@Test
+		public void testSequenceSort()
+		{
+			Assert.assertTrue(1==1); 
+			String [] sortSeqTest = bwt.sortArray(rotateSeq, 11);  // JAY NOT CLEAR WHY THIS DOES NOT WORK
+			Assert.assertEquals(sortSeqTest [1],"zaGGATCCTTT");
+			Assert.assertTrue(sortSeqTest[1].equals("zaGGATCCTTT"));
+			Assert.assertEquals(sortSeqTest [3],"TTzaGGATCCT");
+			Assert.assertTrue(sortSeqTest[3].equals("TTzaGGATCCT"));
+			Assert.assertEquals(sortSeqTest[10],"GGATCCTTTza");
+			Assert.assertTrue(sortSeqTest[10].equals("GGATCCTTTza"));
+			Assert.assertFalse(1==0+2);
+		}
 		
 		// test to check for bwt transform
-		
-
-		// test to check for BWTCompress 
+		@Test	
+		public void testBWTTransform()
+			{		
+				Assert.assertTrue(1==1); 
+				String bwtSeqTest = bwt.sequenceBWT(sortSeqTest[], 11);// JAY NOT CLEAR WHY THIS DOES NOT WORK - same as above
+				Assert.assertEquals(bwtSeqTest,"zGTCGaACTTT");
+				Assert.assertTrue(bwtSeqTest.equals("zGTCGaACTTT"));
+				Assert.assertFalse(1==0+2); 	
+			}
 			
-	}
-	
-	
+		// test to check for BWTCompress 
+		@Test	
+		public void testBWTComp()
+			{		
+				Assert.assertTrue(1==1); 
+				String bwtCompress = BWTCompressor.compress("zGTCGaACTTT", 11);
+				Assert.assertEquals(bwtCompress,"zGTCGaACT3");
+				Assert.assertTrue(bwtCompress.equals("zGTCGaACT3"));
+				Assert.assertFalse(1==0+2); 	
+			}		
 }
