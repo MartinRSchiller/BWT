@@ -18,7 +18,26 @@ import org.junit.Test;
 *  			http://apps.topcoder.com/wiki/display/tc/Writing+Java+Unit+Tests
 *  COPYRIGHT: Copyright (c) 2013, SCHILLER LAB, UNIVERSITY OF NEVADA LAS VEGAS All rights reserved 
 *
-*  CLASS: This Class aggregates all of the Unit Tests for bwtx package.
+*  CLASS: This Class aggregates all of the JUnit Tests for bwt class.
+*/
+
+/**
+ * JAYS EXAMPLE JUNIT TEST
+* Marty: Write your unit tests like this:
+*
+* 1) Call the function in the OTHER class. (i.e. bwt.java)
+* 2) Store the return value in a variable (i.e. aString)
+* 3) Assert something about that value (i.e. assertTrue, assertFalse).
+
+
+@Test
+public void testBWTExample()
+{
+String aString = bwt.aSimpleMethod();
+Assert.assertEquals(aString,"Look how easy junit is");
+Assert.assertTrue(aString.equals("Look how easy junit is"));
+Assert.assertFalse(1==0+2);
+}
 */
 
 public class bwtTest extends TestCase 
@@ -45,23 +64,9 @@ public class bwtTest extends TestCase
 	{
 		bwt bwttest = new bwt();
 		BWTCompressor compressortest = new BWTCompressor();
-		assertEquals("zGTCGaACT3", BWTCompressor("GGATCCTTT");
+		//assertEquals("zGTCGaACT3", BWTCompressor("GGATCCTTT");
 		// test to check for input sequence
 		
-		/**
-		* Marty: Write your unit tests like this:
-		*
-		* 1) Call the function in the OTHER class. (i.e. bwt.java)
-		* 2) Store the return value in a variable (i.e. aString)
-		* 3) Assert something about that value (i.e. assertTrue, assertFalse).
-		*/
-		@Test
-		public void testBWTExample(){
-		String aString = bwt.aSimpleMethod();
-		Assert.assertEquals(aString,"Look how easy junit is");
-		Assert.assertTrue(aString.equals("Look how easy junit is"));
-		Assert.assertFalse(1==0+2);
-		}
 		
 		
 		
@@ -81,51 +86,23 @@ public class bwtTest extends TestCase
 		
 		// test to check accuracy for append sequence
 		@Test
-		public void testSequenceAppend() 
+		public void testSequenceAppend()
 		{
-			String seqappend = "aGGATCCTTTz";
-			Assert.assertTrue(1==1); 
-			Assert.assertTrue("GGATCCTTT".sequenceAppend()=="aGGATCCTTTz"); 
-			Assert.assertFalse(1==0); 	
-		 }
+		String aString = bwt.sequenceAppend("GGATCCTTT");
+		Assert.assertEquals(aString,"GGATCCTTT");
+		Assert.assertTrue(aString.equals("aGGATCCTTTz"));
+		Assert.assertFalse(1==0+2);
+		}
 		
-			
 		// test to check for sequence rotation of first array element
-		@Test
-		public void testCalculateSequenceLength() 
-		{
-		     
-		      
-		 }
 		
 		// test to check for sequence sore of first  and last array element
-		@Test
-		public void testCalculateSequenceLength() 
-		{
-			bwttest.seq("GGATCCTTT"); // input parameters here
-			int seqlength= bwt.sequenceLength(bwttest);  //class.method(test object)
-			assertEquals(9, seqlength, 0);
-		}
 		
 		// test to check for bwt transform
-		@Test
-		public void testSequenceBWT() 
-		{
-			bwttest.sequenceBWT("xxxxxxxxxxx"); // input parameters here
-			bwttest.seq("xxxxxxxxxxx");
-	
-			int seqlength= bwt.sequenceLength(bwttest);  //class.method(test object)
-			assertEquals(zGTCGaACTTT, bwtseq, 0);
-		}
+		
 
 		// test to check for BWTCompress 
-		@Test
-		public void testCompress() 
-		{
-			compressortest.compress("zGTCGaACTTT", 11); //test object.variable(instance parameter)
-			String bwtcompress = BWTCompressor.compress(compressortest);  //class.method(test object)
-			assertEquals("zGTCGaAC3", bwtcompress, "zGTCGaACTTT");  // expected result, return varaible, initial value
-		}		
+			
 	}
 	
 	

@@ -61,7 +61,7 @@ public class bwt
 	 * @param seq
 	 * @return seqlength
 	 */
-	private static int sequenceLength() 
+	static int sequenceLength() 
 	{
 		seq = seq.toUpperCase(); //String converted to uppercase letters 
 		int seqlength = seq.length(); // calcs sequence length  
@@ -73,7 +73,7 @@ public class bwt
 	 * @param seq
 	 * @return seqapp
 	 */
-	private static String sequenceAppend(String seq) 
+	static String sequenceAppend(String seq) 
 	{
 		String seqapp = "a" + seq + "z";
 		return seqapp;
@@ -85,7 +85,7 @@ public class bwt
 	 * @return aseqlength
 
 	 */
-	private static int appendedSequenceLength(int seqlength) 
+	static int appendedSequenceLength(int seqlength) 
 	{
 		int aseqlength = seqlength+2;
 		return aseqlength;
@@ -98,7 +98,7 @@ public class bwt
 	 * @param aseqlength
 	 * @return seqrotarr[];
 	 */
-	private static String[] sequenceRotateArray(String seqapp, int aseqlength) 
+	static String[] sequenceRotateArray(String seqapp, int aseqlength) 
 	{
 		int i = 0;
 		String[] seqrotarr = new String[aseqlength]; //  JAY SAYS no side affects 
@@ -118,7 +118,7 @@ public class bwt
 	 * @param aseqlength
 	 * @return sortseqarr[];
 	 */
-	private static String[] sortArray(String[] seqrotarr, int aseqlength) 
+	static String[] sortArray(String[] seqrotarr, int aseqlength) 
 	{
 		String[] sortseqarr = new String[aseqlength];
 		System.arraycopy(seqrotarr, 0, sortseqarr, 0, aseqlength );
@@ -145,7 +145,7 @@ public class bwt
 		 * @param aseqlength
 		 * @return seqbwt
 		 */
-		private static String sequenceBWT(String[] sortseqarr, int aseqlength) 
+	static String sequenceBWT(String[] sortseqarr, int aseqlength) 
 		{
 			String seqbwt = "";
 			for(int l = 0; l < aseqlength; l++)
@@ -167,7 +167,7 @@ public class bwt
 		 * @param seq
 		 * @param seqbwt
 		 */
-		private static void printResults(int seqlength, int aseqlength,
+	static void printResults(int seqlength, int aseqlength,
 				String [] seqrotarr, String [] sortseqarr, String seq2, String seqbwt, String bwtcompress) 
 		{
 			System.out.println("The sequence length is " + seqlength);
