@@ -1,7 +1,9 @@
 package bwtx;
 
-import static org.junit.Assert.*;
-import org.junit.*; 
+import junit.framework.Assert;
+
+import org.junit.Test;
+
 
 /**
 *  SCHILLER LAB SOFTWARE
@@ -27,8 +29,8 @@ public class BWTCompressorTest
 	{	
 		String compresstest = BWTCompressor.compress("zGTCGaACTTT", 11);  // object = class.method(test arguments)
 		String compresstest2 = BWTCompressor.compress("zGTCGaACAAA", 11);
-		assertEquals("Output of class" , "zGTCGaACT3", compresstest.toString());
-		assertEquals("Output of class" , "zGTCGaACA3", compresstest2.toString());// expected result, object
+		Assert.assertEquals("Output of class" , "zGTCGaACT3", compresstest.toString());
+		Assert.assertEquals("Output of class" , "zGTCGaACA3", compresstest2.toString());// expected result, object
 	}
 
 }
