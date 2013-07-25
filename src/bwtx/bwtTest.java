@@ -91,7 +91,7 @@ public class bwtTest extends TestCase
 		
 		// test to check for sequence sort of first  and last array element
 		@Test
-		public void testSequenceSort()
+		public void testSequenceSort(String[] rotateSeq)
 		{
 			Assert.assertTrue(1==1); 
 			String [] sortSeqTest = bwt.sortArray(rotateSeq, 11);  // JAY NOT CLEAR WHY THIS DOES NOT WORK
@@ -106,10 +106,10 @@ public class bwtTest extends TestCase
 		
 		// test to check for bwt transform
 		@Test	
-		public void testBWTTransform()
+		public void testBWTTransform(String[] sortSeqTest)
 			{		
 				Assert.assertTrue(1==1); 
-				String bwtSeqTest = bwt.sequenceBWT(sortSeqTest[], 11);// JAY NOT CLEAR WHY THIS DOES NOT WORK - same as above
+				String bwtSeqTest = bwt.sequenceBWT(sortSeqTest, 11);// JAY NOT CLEAR WHY THIS DOES NOT WORK - same as above
 				Assert.assertEquals(bwtSeqTest,"zGTCGaACTTT");
 				Assert.assertTrue(bwtSeqTest.equals("zGTCGaACTTT"));
 				Assert.assertFalse(1==0+2); 	
