@@ -34,8 +34,8 @@ public class bwt
 	*  String sorttemp is a temporary holder for the sorting method
 	*  btwseq is the burrows wheeler transform return value of class
 	*/
-	//private static String seq = "AGTCACAGTCATCAGTCTAGTCAGTCAGTCAGTCTACATAGCGATTACGGCATCAGTCAGTCATCGA";
-	public static String seq = "GGATCCTTT";  // junit unit testing sequence
+	public static String seq = "AGTCACAGTCATCAGTCTAGTCAGTCAGTCAGTCTACATAGCGATTACGGCATCAGTCAGTCATCGA";
+	//public static String seq = "GGATCCTTT";  // junit unit testing sequence
 	
 	/**
 	* The main method prints the sequence, calls a series of methods for steps in the transformation,
@@ -217,7 +217,7 @@ public class bwt
 				System.out.println();
 				System.out.println("The Burrows Wheeler transform is " + seqbwt);
 			}
-			if (outputchoice == 2)
+			if (outputchoice == 2 || outputchoice == 3)
 			{
 				System.out.println();
 				System.out.println("A compression of the BWT is " + bwtcompress);
