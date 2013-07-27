@@ -1,6 +1,15 @@
 package bwtx;
 
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 
 /**
 *  SCHILLER LAB SOFTWARE
@@ -17,46 +26,35 @@ import java.util.Scanner;
 
 public class InputDNA 
 {
-
-	/**
-	 * @param args
-	 * @return
-	 */
-	//public static void main(String[] args) 
-	
-	private static String dnaSelector(int inputchoice)
+/**
+* inputSelector method records scanner input of choice of type of input DNA, (1) DNA seqeunce, (2) accession 
+* number looked up on RefSeq, (3) mysql database
+* @param  scanner input
+* @return inputchoice
+*/	
+//public static void main(String[] args) // change to input selector when testing id done.
+	public static String inputSelector()
 	{
-	if (inputchoice == 1) // use case instead
-	{
-		String dnainput = userEntry();
-	}
-	if (inputchoice == 2)
-	{
-		String dnainput = webRetrieval();
-	}
-	if (inputchoice == 3)
-	{
-		//String[] dnainput = btwx.MysqlTableAcccess.alMDS;
-	}
-	return dnainput; /// could remove and change this back to main.  remove main from other program and call??
-	}
-
-	//----------------------- end of main method ---------------------------------
-	/**
-	 * @param
-	 * @return
-	 */
-	private static int inputSelector()
-	{
-		// try catch for integers not 1-3
 		Scanner kb = new Scanner(System.in);
 		System.out.println("What type of input would you like?");
 		System.out.println("(1) DNA seqeunce, (2) accession number looked up on RefSeq, (3) mysql database");
 		int inputchoice = kb.nextByte();
+		String dnainput = new String();
 		try
 		{
 			System.out.println("You have selected option " + inputchoice);
-			if (inputchoice == 1 || inputchoice == 2 || inputchoice == 3); 
+			if (inputchoice == 1) // use cases instead
+			{
+				dnainput = userEntry();
+			}
+			if (inputchoice == 2)
+			{
+				dnainput = webRetrieval();
+			}
+			if (inputchoice == 3)
+			{
+				//String[] dnainput = btwx.MysqlTableAcccess.alMDS; // diffent input pipeline
+			}
 		}
 		catch (Exception InputMismatchException)
 		{
@@ -64,11 +62,12 @@ public class InputDNA
 				{
 				System.out.println("Please select 1, 2, or 3" );			
 				}
-		} while (true) return inputchoice;
-		
+		} 
+		while (true) return dnainput; 		
 	}
-	
 
+	//----------------------- end of main method ---------------------------------
+	
 	/**
 	 * Method takes a DNA input sequence from keyboard entry
 	 * @param 
@@ -78,17 +77,17 @@ public class InputDNA
 	{
 		Scanner kb = new Scanner(System.in);
 		System.out.println("Insert the DNA sequence");
-		String dnainput1 = kb.nextLine().toUpperCase();
-			if (dnainput1.matches("^[ATCG]+$"))
+		String dnainput = kb.nextLine().toUpperCase();
+			if (dnainput.matches("^[ATCG]+$"))
 			    {
-			      System.out.println("You have selected the sequence " + dnainput1);
+			      System.out.println("You have selected the sequence " + dnainput);
 			    }
 			    else
 			    {
 			      throw new IllegalArgumentException("DNA Sequences should only contain A, T, C, G charaters");
 				// System.out.println("Your DNA sequences should only have G, A, T, C as valid characters" );			
 				}
-		 return dnainput1;
+		 return dnainput;
 	}
 	
 	/**
@@ -99,16 +98,34 @@ public class InputDNA
 	private static String webRetrieval() 
 	{
 		Scanner kb = new Scanner(System.in);
-		System.out.println("Insert the RefSeq accession number e.g.NM_003947 ");
-		String dnainput2 = kb.nextLine().toUpperCase();
+		System.out.println("Insert the RefSeq accession number, e.g.NM_003947.4 ");
+		String acessionnum = kb.nextLine().toUpperCase();
 			
-			   System.out.println("You have selected the sequence " + dnainput2);
-			   //http://www.ncbi.nlm.nih.gov/nuccore/NM_003947.4?report=fasta&log$=seqview
+			   System.out.println("You have selected the accession number " + acessionnum);
+			     
+			   try {
+					// get URL content
+					URL url = new URL("http://www.ncbi.nlm.nih.gov/nuccore/" + acessionnum + "?report=fasta&log$=seqview");
+					URLConnection conn = url.openConnection();
+		 
+					
+					// open the stream and put it into BufferedReader
+					// take line after mRNA - still need to do.
+					BufferedReader br = new BufferedReader(
+		                               new InputStreamReader(conn.getInputStream()));
+					System.out.println(url); // change it to dnainput
+				} catch (MalformedURLException e) 
+				{
+					e.printStackTrace();
+				} catch (IOException e) 
+				{
+					e.printStackTrace();
+				}
+			   String dnainput = url;
 			   
-			   //parse based on origin. need to remove whitespace and numberical character.
-			   // take line after mRNA
-		 return dnainput2;		
-	}	
+			   //System.out.println("You DNA sequence is " + url);  //testing only   	 
+	}
+	return dnainput;
 }
 
 
