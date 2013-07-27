@@ -48,6 +48,7 @@ public class bwt
 	*/
 	public static void main(String[] args)// add class for scanner input from website.  Convert to class later
 	{
+		String seq = InputDNA.dnaSelector();  // what is wrong here do I need to make input my main method and call this class?
 		int outputchoice = outputSelector();
 		int seqlength = sequenceLength();
 		String seqapp = sequenceAppend(seq); 
