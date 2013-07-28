@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.StringTokenizer;
 
 /**
 *  SCHILLER LAB SOFTWARE
@@ -32,8 +33,8 @@ public class InputDNA
 * @param  scanner input
 * @return inputchoice
 */	
-//public static void main(String[] args) // change to input selector when testing id done.
-	public static String inputSelector()
+public static void main(String[] args) // change to input selector when testing id done.
+	//public static String inputSelector()
 	{
 		Scanner kb = new Scanner(System.in);
 		System.out.println("What type of input would you like?");
@@ -45,7 +46,7 @@ public class InputDNA
 			System.out.println("You have selected option " + inputchoice);
 			if (inputchoice == 1) // use cases instead
 			{
-				dnainput = userEntry();
+				dnainput = userEntry();  // need to change so that other methods are not called from this method, when it is not main
 			}
 			if (inputchoice == 2)
 			{
@@ -91,7 +92,7 @@ public class InputDNA
 	}
 	
 	/**
-	 * This method takes and accession number, tos to the refseq website and returns accession sequence into dnainput2
+	 * This method takes an accession number to the refseq website and returns accession sequence into dnainput
 	 * @param
 	 * @return dnainput2
 	 */
@@ -100,7 +101,6 @@ public class InputDNA
 		Scanner kb = new Scanner(System.in);
 		System.out.println("Insert the RefSeq accession number, e.g.NM_003947.4 ");
 		String acessionnum = kb.nextLine().toUpperCase();
-			
 			   System.out.println("You have selected the accession number " + acessionnum);
 			     
 			   try {
@@ -113,7 +113,12 @@ public class InputDNA
 					// take line after mRNA - still need to do.
 					BufferedReader br = new BufferedReader(
 		                               new InputStreamReader(conn.getInputStream()));
-					System.out.println(url); // change it to dnainput
+					//StringTokenizer dnainputx = new StringTokenizer(url, "mRNA");
+					String dnainput2 = nextToken(br, "mRNA");
+					//while (dnainput2.hasMoreElements()) {
+					//	System.out.println(dnainput2.nextElement());
+					//}
+					//System.out.println(dnainput2); // change it to dnainput
 				} catch (MalformedURLException e) 
 				{
 					e.printStackTrace();
@@ -121,11 +126,11 @@ public class InputDNA
 				{
 					e.printStackTrace();
 				}
-			   String dnainput = url;
+			  //String dnainput = dnainput2; //  Why is this a problem
 			   
 			   //System.out.println("You DNA sequence is " + url);  //testing only   	 
 	}
-	return dnainput;
+	return dnainput2; //  Why is this a problem
 }
 
 
