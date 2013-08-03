@@ -46,7 +46,7 @@ Assert.assertFalse(1==0+2);
  *
  * @return A test suite containing all unit tests.
  */
-public class bwtTest extends TestCase 
+public class TestBWT 
 {
 /**
 	public static void main(String[] args) // use main for testing then depricat
