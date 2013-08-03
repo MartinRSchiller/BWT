@@ -7,7 +7,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * sequence from a website taking a scanner input of an accession number
+ * Sequence from a website taking a scanner input of an accession number
  */
 public class DNAInputProviderWEB{
     static public String DNAfromWeb(String urlString){
