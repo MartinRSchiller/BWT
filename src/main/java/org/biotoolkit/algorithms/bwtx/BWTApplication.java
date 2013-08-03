@@ -21,7 +21,7 @@ import java.util.Scanner;
 	*   column of the seqRotArr call seqbtw.  The main method also calls another class BWTCompressor to 
 	*   compress the bwt string.
 */
-public class bwt
+public class BWTApplication
 {
 	/**
 	*  Variables
@@ -34,7 +34,6 @@ public class bwt
 	*  String sorttemp is a temporary holder for the sorting method
 	*  btwseq is the burrows wheeler transform return value of class
 	*/
-	public static String seq = "AGTCACAGTCATCAGTCTAGTCAGTCAGTCAGTCTACATAGCGATTACGGCATCAGTCAGTCATCGA";
 	//public static String seq = "GGATCCTTT";  // junit unit testing sequence
 	
 	/**
@@ -48,18 +47,54 @@ public class bwt
 	*/
 	public static void main(String[] args)// add class for scanner input from website.  Convert to class later
 	{
-		String seq = InputDNA.getString(dnainput); //JAY WHAT IS WRONG HERE I need to make input my main method and call this class?
+	    /**
+	     * The first argument should be a class name.
+	     */
+	    String inputSeq=runInputProvider(args[0]);
+
 		int outputchoice = outputSelector();
-		int seqlength = sequenceLength();
+		int seqlength = sequenceLength(inputSeq);
+		/**
+		 * Remember the airplane example?  This method should only know that somehwere in the ether there
+		 * is an input provider.  But it doesnt know the implementation.  We provide the implmentation by 
+		 * dynamically creating a class by its name.  The name is given as input to the program from the terminal 
+		 * when the program is launched by a user.  
+		 */
+		String seq = runInputProvider(args[0]);
 		String seqapp = sequenceAppend(seq); 
 		int aseqlength = appendedSequenceLength(seqlength);
 		String[] seqrotarr= sequenceRotateArray(seqapp, aseqlength);
 		String[] sortseqarr = sortArray(seqrotarr, aseqlength);
 		String seqbwt = sequenceBWT(sortseqarr, aseqlength);	
 		String bwtcompress = BWTCompressor.compress(seqbwt, aseqlength);  // This calls other class
-		printResults(seqlength, aseqlength, outputchoice, (seqrotarr), (sortseqarr), seq, seqbwt, bwtcompress);
+		printResults(inputSeq, seqlength, aseqlength, outputchoice, (seqrotarr), (sortseqarr), seq, seqbwt, bwtcompress);
 	}
-	//-------------------end of main method -----------------------------------------------------------
+
+	/**
+	 * Made this public so that it can be unit tested.
+	 * @param dnaClassName
+	 * @return
+	 */
+    public static String runInputProvider(String dnaClassName){
+        //JAY WHAT IS WRONG HERE I need to make input my main method and call this class?
+		try{
+		    /**
+		     * Use reflection to dynamically load a class from the commandline.
+		     */
+		    final String seq = ((DNAInputProvider) Class.forName(dnaClassName).newInstance()).getDNAString(); 
+		    return seq;
+		}
+		catch(Exception e){
+		    /**
+		     * Marty: initially, this is how I like to throw exceptions , keep them simple, just
+		     * wrap them in a runtime that shuts the program down.  No need for fancy exception
+		     * handling in the early stages of development.  
+		     */
+		    System.err.println("The fully qualified class name could not be loaded.  Are you sure its correct? " + dnaClassName );
+            System.err.println("Hint: It should be something like : org.biotoolkit.algorithms.bwtx.DNAInputProviderInteractive");
+		    throw new RuntimeException(e);
+		}
+    }
 	
 	// method here
 	/**
@@ -94,9 +129,9 @@ public class bwt
 	 * @param seq
 	 * @return seqlength
 	 */
-	static int sequenceLength() 
+	static int sequenceLength(String seqI) 
 	{
-		seq = seq.toUpperCase(); //String converted to uppercase letters 
+		String seq = seqI.toUpperCase(); //String converted to uppercase letters 
 		int seqlength = seq.length(); // calcs sequence length  
 		return seqlength;
 	}
@@ -200,7 +235,7 @@ public class bwt
 		 * @param seq
 		 * @param seqbwt
 		 */
-	static void printResults(int seqlength, int aseqlength, int outputchoice,
+	static void printResults(String inputSeq, int seqlength, int aseqlength, int outputchoice,
 				String [] seqrotarr, String [] sortseqarr, String seq2, String seqbwt, String bwtcompress) 
 		{ 
 			System.out.println("The sequence length is " + seqlength);
@@ -212,7 +247,7 @@ public class bwt
 			System.out.println("The sorted array is:");
 			System.out.println(sortseqarr);
 			System.out.println();
-			System.out.println("The input sequence is " + seq);
+			System.out.println("The input sequence is " + inputSeq);
 			if (outputchoice == 1 || outputchoice == 3) 
 			{
 				System.out.println();

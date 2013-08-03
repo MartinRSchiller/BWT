@@ -1,6 +1,9 @@
-package bwtx;
- import java.util.regex;
- import java.net.URL;
+package org.biotoolkit.algorithms.bwtx;
+ import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
 
  /**
  *  SCHILLER LAB SOFTWARE
@@ -16,7 +19,7 @@ package bwtx;
  *
  *  CLASS: DNAfromWeb class imports a DNA sequence from a website taking a scanner input of an accession number
  */
-public class DNAfromWeb 
+public class DNAInputProviderWEB 
 {
 	static public String DNAfromWeb(String urlString)
 	{

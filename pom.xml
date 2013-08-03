@@ -31,12 +31,10 @@
 		    - (biojava libs, see venn core (note that there is a repository tag for that) : 
 		  https://github.com/jayunit100/VennCore/blob/master/pom.xml
       -->
-  
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
+  <dependency>
+	<groupId>junit</groupId>
+	<artifactId>junit</artifactId>
+	<version>4.4</version>
+</dependency>
   </dependencies>
 </project>

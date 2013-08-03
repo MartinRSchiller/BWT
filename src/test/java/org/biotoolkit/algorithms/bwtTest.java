@@ -1,12 +1,10 @@
 package org.biotoolkit.algorithms;
 
-import org.biotoolkit.algorithms.bwtx.BWTCompressor;
-import org.biotoolkit.algorithms.bwtx.bwt;
-import org.junit.Test;
-
 import junit.framework.Assert;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+
+import org.biotoolkit.algorithms.bwtx.BWTCompressor;
+import org.biotoolkit.algorithms.bwtx.BWTApplication;
+import org.junit.Test;
 
 /**
 *  SCHILLER LAB SOFTWARE
@@ -48,15 +46,8 @@ Assert.assertFalse(1==0+2);
  *
  * @return A test suite containing all unit tests.
  */
-public class bwtTest extends TestCase 
+public class bwtTest 
 {
-/**
-	public static void main(String[] args) // use main for testing then depricat
-	{
-		
-		
-	}
-*/	
 	// test to check sequence length
 	@Test	
 	public void testCalcSequenceLength()
@@ -71,7 +62,7 @@ public class bwtTest extends TestCase
 		@Test
 		public void testSequenceAppend()
 		{
-			String appendSeq = bwt.sequenceAppend("GGATCCTTT");
+			String appendSeq = BWTApplication.sequenceAppend("GGATCCTTT");
 			Assert.assertEquals(appendSeq,"aGGATCCTTTz");
 			Assert.assertTrue(appendSeq.equals("aGGATCCTTTz"));
 			Assert.assertFalse(1==0+2);
@@ -81,7 +72,7 @@ public class bwtTest extends TestCase
 		@Test
 		public void testSequenceRotation()
 		{
-			String [] rotateSeq = bwt.sequenceRotateArray("aGGATCCTTTz", 11);
+			String [] rotateSeq = BWTApplication.sequenceRotateArray("aGGATCCTTTz", 11);
 			Assert.assertEquals(rotateSeq[1],"zaGGATCCTTT");
 			Assert.assertTrue(rotateSeq[1].equals("zaGGATCCTTT"));
 			Assert.assertEquals(rotateSeq[3],"TTzaGGATCCT");
@@ -96,7 +87,7 @@ public class bwtTest extends TestCase
 		public void testSequenceSort(String[] rotateSeq)
 		{
 			Assert.assertTrue(1==1); 
-			String [] sortSeqTest = bwt.sortArray(rotateSeq, 11);  // JAY NOT CLEAR WHY THIS DOES NOT WORK
+			String [] sortSeqTest = BWTApplication.sortArray(rotateSeq, 11);  // JAY NOT CLEAR WHY THIS DOES NOT WORK
 			Assert.assertEquals(sortSeqTest [1],"zaGGATCCTTT");
 			Assert.assertTrue(sortSeqTest[1].equals("zaGGATCCTTT"));
 			Assert.assertEquals(sortSeqTest [3],"TTzaGGATCCT");
@@ -111,7 +102,7 @@ public class bwtTest extends TestCase
 		public void testBWTTransform(String[] sortSeqTest)
 			{		
 				Assert.assertTrue(1==1); 
-				String bwtSeqTest = bwt.sequenceBWT(sortSeqTest, 11);// JAY NOT CLEAR WHY THIS DOES NOT WORK - same as above
+				String bwtSeqTest = BWTApplication.sequenceBWT(sortSeqTest, 11);// JAY NOT CLEAR WHY THIS DOES NOT WORK - same as above
 				Assert.assertEquals(bwtSeqTest,"zGTCGaACTTT");
 				Assert.assertTrue(bwtSeqTest.equals("zGTCGaACTTT"));
 				Assert.assertFalse(1==0+2); 	
