@@ -4,6 +4,9 @@ import static org.junit.Assert.*;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+
+import org.biotoolkit.algorithms.bwtx.BWTApplication;
+import org.biotoolkit.algorithms.bwtx.BWTCompressor;
 import org.junit.Test;
 
 /**
