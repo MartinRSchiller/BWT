@@ -1,4 +1,4 @@
-package bwtx;
+package org.biotoolkit.algorithms.bwtx;
 
 import java.util.Scanner;
 
@@ -48,7 +48,7 @@ public class bwt
 	*/
 	public static void main(String[] args)// add class for scanner input from website.  Convert to class later
 	{
-		String seq = InputDNA.dnaSelector();  // what is wrong here do I need to make input my main method and call this class?
+		String seq = InputDNA.getString(dnainput); //JAY WHAT IS WRONG HERE I need to make input my main method and call this class?
 		int outputchoice = outputSelector();
 		int seqlength = sequenceLength();
 		String seqapp = sequenceAppend(seq); 
@@ -106,7 +106,7 @@ public class bwt
 	 * @param seq
 	 * @return seqapp
 	 */
-	static String sequenceAppend(String seq) 
+	public static String sequenceAppend(String seq) 
 	{
 		String seqapp = "a" + seq + "z";
 		return seqapp;
@@ -131,7 +131,7 @@ public class bwt
 	 * @param aseqlength
 	 * @return seqrotarr[];
 	 */
-	static String[] sequenceRotateArray(String seqapp, int aseqlength) 
+	public static String[] sequenceRotateArray(String seqapp, int aseqlength) 
 	{
 		int i = 0;
 		String[] seqrotarr = new String[aseqlength]; //  JAY SAYS no side affects 
@@ -151,7 +151,7 @@ public class bwt
 	 * @param aseqlength
 	 * @return sortseqarr[];
 	 */
-	static String[] sortArray(String[] seqrotarr, int aseqlength) 
+	public static String[] sortArray(String[] seqrotarr, int aseqlength) 
 	{
 		String[] sortseqarr = new String[aseqlength];
 		System.arraycopy(seqrotarr, 0, sortseqarr, 0, aseqlength );
@@ -178,7 +178,7 @@ public class bwt
 		 * @param aseqlength
 		 * @return seqbwt
 		 */
-	static String sequenceBWT(String[] sortseqarr, int aseqlength) 
+	public static String sequenceBWT(String[] sortseqarr, int aseqlength) 
 		{
 			String seqbwt = "";
 			for(int l = 0; l < aseqlength; l++)
