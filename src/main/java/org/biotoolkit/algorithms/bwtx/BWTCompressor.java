@@ -1,6 +1,4 @@
-package bwtx;
-
-import bwtx.bwt;
+package org.biotoolkit.algorithms.bwtx;
 
 public class BWTCompressor 
 {

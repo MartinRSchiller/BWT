@@ -1,0 +1,13 @@
+This is a mavenized version of the BWT project.  To run unit tests:
+
+   mvn test
+
+To package a jar: 
+
+   mvn package
+
+To add dependencies: 
+
+   Edit the pom file. 
+
+

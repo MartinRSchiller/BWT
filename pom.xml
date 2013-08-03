@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.biotoolkit.algorithms</groupId>
+  <artifactId>bwt</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>bwt</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+     <!-- 
+          This is how you add dependencies to a mvn pom. 
+          To play around with it, google for "apache math pom" and add 
+          the dependency tags here.  
+          Below, you can see an example, of junit, which is added to this pom by default.
+          
+          This maven project can be created in 10 milliseconds from a template: 
+          mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DgroupId=org.biotoolkit.algorithms -DartifactId=bwt
+		
+		  
+		
+		  To see examples of how to include 
+		    - hibernate,neodatis (an embedded database), and others are in there
+		    - (biojava libs, see venn core (note that there is a repository tag for that) : 
+		  https://github.com/jayunit100/VennCore/blob/master/pom.xml
+      -->
+  
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
