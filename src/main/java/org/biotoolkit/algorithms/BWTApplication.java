@@ -1,6 +1,9 @@
-package org.biotoolkit.algorithms.bwtx;
+package org.biotoolkit.algorithms;
 
 import java.util.Scanner;
+
+import org.biotoolkit.algorithms.bwtx.BWTCompressor;
+import org.biotoolkit.algorithms.bwtx.DNAInputProvider;
 
 /**
  * BWTCalc This class takes seq object from inputDNA class, performs a bwt

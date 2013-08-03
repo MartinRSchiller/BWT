@@ -1,5 +1,7 @@
 package org.biotoolkit.algorithms.bwtx;
 
+import org.biotoolkit.algorithms.BWTApplication;
+
 public class Driver{
 
     /**

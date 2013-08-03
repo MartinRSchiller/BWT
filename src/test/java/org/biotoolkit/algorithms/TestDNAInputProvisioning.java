@@ -1,6 +1,5 @@
 package org.biotoolkit.algorithms;
 
-import org.biotoolkit.algorithms.bwtx.BWTApplication;
 import org.junit.Test;
 
 public class TestDNAInputProvisioning{

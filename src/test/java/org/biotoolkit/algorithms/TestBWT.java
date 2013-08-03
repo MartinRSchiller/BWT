@@ -1,9 +1,11 @@
 package org.biotoolkit.algorithms;
 
+import static org.junit.Assert.*;
 import junit.framework.Assert;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 
 import org.biotoolkit.algorithms.bwtx.BWTCompressor;
-import org.biotoolkit.algorithms.bwtx.BWTApplication;
 import org.junit.Test;
 
 /**
@@ -48,6 +50,13 @@ Assert.assertFalse(1==0+2);
  */
 public class TestBWT 
 {
+/**
+	public static void main(String[] args) // use main for testing then depricat
+	{
+		
+		
+	}
+*/	
 	// test to check sequence length
 	@Test	
 	public void testCalcSequenceLength()
@@ -84,10 +93,8 @@ public class TestBWT
 		
 		// test to check for sequence sort of first  and last array element
 		@Test
-		public void testSequenceSort( )
+		public void testSequenceSort(String[] rotateSeq)
 		{
-		    //marty fix this !
-		    /**
 			Assert.assertTrue(1==1); 
 			String [] sortSeqTest = BWTApplication.sortArray(rotateSeq, 11);  // JAY NOT CLEAR WHY THIS DOES NOT WORK
 			Assert.assertEquals(sortSeqTest [1],"zaGGATCCTTT");
@@ -97,20 +104,17 @@ public class TestBWT
 			Assert.assertEquals(sortSeqTest[10],"GGATCCTTTza");
 			Assert.assertTrue(sortSeqTest[10].equals("GGATCCTTTza"));
 			Assert.assertFalse(1==0+2);
-			**/
 		}
 		
+		// test to check for bwt transform
 		@Test	
-		public void testBWTTransform()
+		public void testBWTTransform(String[] sortSeqTest)
 			{		
-		        //marty fix this test
-		        /**
 				Assert.assertTrue(1==1); 
 				String bwtSeqTest = BWTApplication.sequenceBWT(sortSeqTest, 11);// JAY NOT CLEAR WHY THIS DOES NOT WORK - same as above
 				Assert.assertEquals(bwtSeqTest,"zGTCGaACTTT");
 				Assert.assertTrue(bwtSeqTest.equals("zGTCGaACTTT"));
 				Assert.assertFalse(1==0+2); 	
-				**/
 			}
 			
 		// test to check for BWTCompress 
