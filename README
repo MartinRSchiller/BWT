@@ -10,4 +10,8 @@ To add dependencies:
 
    Edit the pom file. 
 
+To set up eclipse:
 
+1) Run "mvn test" - this ensures that the code "works"
+2) Run "mvn eclipse:eclipse" - this creates eclipse project 
+3) Import the project into eclipse.
