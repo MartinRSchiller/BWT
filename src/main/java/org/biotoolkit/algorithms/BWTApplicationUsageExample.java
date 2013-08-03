@@ -1,8 +1,7 @@
-package org.biotoolkit.algorithms.bwtx;
+package org.biotoolkit.algorithms;
 
-import org.biotoolkit.algorithms.BWTApplication;
 
-public class Driver{
+public class BWTApplicationUsageExample{
 
     /**
      * Example of how to launch the program from a jar :

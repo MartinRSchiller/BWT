@@ -22,7 +22,7 @@ import org.junit.Test;
 *  CLASS: This Class contains the Unit Tests for BWTCompressor class.
 */
 
-public class BWTCompressorTest 
+public class TestBWTCompression 
 {
 	//test to check for BWTCompress  "zGTCGaACTTT"
 	@Test
