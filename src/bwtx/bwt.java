@@ -1,5 +1,7 @@
 package bwtx;
 
+import java.util.Scanner;
+
 /**
 *  SCHILLER LAB SOFTWARE
 *  PROJECT: Burrows Wheeler transform of a DNA sequence
@@ -32,8 +34,8 @@ public class bwt
 	*  String sorttemp is a temporary holder for the sorting method
 	*  btwseq is the burrows wheeler transform return value of class
 	*/
-	//private static String seq = "AGTCACAGTCATCAGTCTAGTCAGTCAGTCAGTCTACATAGCGATTACGGCATCAGTCAGTCATCGA";
-	public static String seq = "GGATCCTTT";  // junit unit testing sequence
+	public static String seq = "AGTCACAGTCATCAGTCTAGTCAGTCAGTCAGTCTACATAGCGATTACGGCATCAGTCAGTCATCGA";
+	//public static String seq = "GGATCCTTT";  // junit unit testing sequence
 	
 	/**
 	* The main method prints the sequence, calls a series of methods for steps in the transformation,
@@ -46,6 +48,8 @@ public class bwt
 	*/
 	public static void main(String[] args)// add class for scanner input from website.  Convert to class later
 	{
+		String seq = InputDNA.dnaSelector();  // what is wrong here do I need to make input my main method and call this class?
+		int outputchoice = outputSelector();
 		int seqlength = sequenceLength();
 		String seqapp = sequenceAppend(seq); 
 		int aseqlength = appendedSequenceLength(seqlength);
@@ -53,9 +57,38 @@ public class bwt
 		String[] sortseqarr = sortArray(seqrotarr, aseqlength);
 		String seqbwt = sequenceBWT(sortseqarr, aseqlength);	
 		String bwtcompress = BWTCompressor.compress(seqbwt, aseqlength);  // This calls other class
-		printResults(seqlength, aseqlength, (seqrotarr), (sortseqarr), seq, seqbwt, bwtcompress);
+		printResults(seqlength, aseqlength, outputchoice, (seqrotarr), (sortseqarr), seq, seqbwt, bwtcompress);
 	}
 	//-------------------end of main method -----------------------------------------------------------
+	
+	// method here
+	/**
+	 * outputSelector method takes scanner input choice (1)bwt, (2)bwtcompress, or (3)both and determines what is printed by class
+	 * @param choice - scanner input of selection
+	 * @return outputchoice - 
+	 */
+	static int outputSelector() 
+	{
+		// try catch for integers not 1-3
+		Scanner kb = new Scanner(System.in);
+		System.out.println("What type of output would you like?");
+		System.out.println("(1) Burrows Wheeler Transform, (2) Compressed Burrows Wheeler Transform, (3) Both");
+		int outputchoice = kb.nextByte();
+		try
+		{
+			System.out.println("You have selected option " + outputchoice);
+			if (outputchoice == 1 || outputchoice == 2 || outputchoice == 3); 
+		}
+		catch (Exception InputMismatchException)
+		{
+			if (outputchoice != 1 || outputchoice != 2 || outputchoice != 3) 
+				{
+				System.out.println("Please select 1, 2, or 3" );			
+				}
+		} while (true) return outputchoice;
+		
+	}
+	
 	/**
 	 * sequenceLength method calculates and returns sequence length seqlength (converts case also)
 	 * @param seq
@@ -167,9 +200,9 @@ public class bwt
 		 * @param seq
 		 * @param seqbwt
 		 */
-	static void printResults(int seqlength, int aseqlength,
+	static void printResults(int seqlength, int aseqlength, int outputchoice,
 				String [] seqrotarr, String [] sortseqarr, String seq2, String seqbwt, String bwtcompress) 
-		{
+		{ 
 			System.out.println("The sequence length is " + seqlength);
 			System.out.println("The appended sequence length is " + aseqlength);
 			System.out.println();
@@ -179,13 +212,20 @@ public class bwt
 			System.out.println("The sorted array is:");
 			System.out.println(sortseqarr);
 			System.out.println();
-			System.out.println("The bwt string is:");
-			System.out.println();
 			System.out.println("The input sequence is " + seq);
-			System.out.println("The Burrows Wheeler transform is " + seqbwt);
-			System.out.println();
-			System.out.println("A compression of the BWT is " + bwtcompress);
+			if (outputchoice == 1 || outputchoice == 3) 
+			{
+				System.out.println();
+				System.out.println("The Burrows Wheeler transform is " + seqbwt);
+			}
+			if (outputchoice == 2 || outputchoice == 3)
+			{
+				System.out.println();
+				System.out.println("A compression of the BWT is " + bwtcompress);
+			}
+			else return;
 		}
+			
 }
 		
 /**

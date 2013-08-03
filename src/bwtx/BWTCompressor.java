@@ -4,12 +4,12 @@ import bwtx.bwt;
 
 public class BWTCompressor 
 {
-	public static void main(String args[])  // ghetto unit test method. 
+	public static void main(String args[])  // ghetto unit test method. ASK JAY HOW TO FIX
 	{
 		compress("AGGGATCCTTT", 11);  // pass two inputs
 		
 		String bwtcompress = null;  // gives one output // send back to bwt class for print report.
-		System.out.println("");		
+		//System.out.println("");		
 		//System.out.println("The compressed Burrows Wheeler Transform is: " + bwtcompress);
 	}
 	
@@ -68,7 +68,7 @@ public class BWTCompressor
 					}
 		
 		System.out.println("return value " + bwtcompress); // test print
-	return bwtcompress;  // returns one output  WHY IS THIS BARKING
+	return bwtcompress;
 	}
 }
 /** 
