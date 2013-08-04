@@ -1,3 +1,64 @@
+CURRENT QUESTIONS FOR JAY**************************************************************
+
+1) Why are their two different packages under main
+2) you put a dependencies in several classes.  Shouldn't this be in the pom file. Should I move them
+3) Should I switch output to similar format as DNA input provider
+4) when I run the program it says Failed to load Main-Class manifest attribute from
+bwt-1.0-SNAPSHOT.jar.  I added manifest to main class - please check
+5) BWT class why do we nee inputSeq line 47 and seq this line?
+6) we never call BWTApplicationUsageExample?
+7) why does the TestDNAInputProvision class not have an expected output to test.
+8) DNAInputProviderSIMPLE seems like it should be a unittes not an input type
+9) confused about intention of WEB dna input provided vs. refseq.
+10) Why do you not use @override and extends in DNAInputProviderWEB
+
+
+THING FOR MRS TO DO**************************************************************
+Write unit tests for reading from website. Post on stack overflow
+Look up reflection
+look up override
+look up abstract class
+lookup class extends other class
+read about java collections lists arraylists, vectors, hashmaps,
+
+
+BWT PROGRAM**************************************************************
+Command to run program.  >java -jar myjar.jar org.biotoolkit.algorithms.bwtx.DNAInputProviderINTERACTIVE 
+Other DNAInputProvider classes could also be used to launch:
+DNAInputProviderWEB.java
+DNAInputProviderSIMPLE.java
+DNAInputProviderINTERACTIVE.java
+
+
+BWT PACKAGES, CLASSES AND FUNCTIONS**************************************************************
+
+org.biotoolkit.algorithms package Main package containing program.
+BWTApplication.java               - main class
+BWTApplicaitonUsageExample.java   - example of how to call the application
+
+org.biotoolkit.algorithmsbwtx package
+RefSeqInputProvider.java
+package-info.java
+DNAInputProviderWEB.java
+DNAInputProviderSIMPLE.java			-overides the input for the DNAInputProvider class providing a dna sequence.
+DNAInputProviderINTERACTIVE.java
+DNAInputProvider.java				- class that validates the the input is a correct DNA string.  Called by other classes
+BWTCompressor.java   				- package compresses a bwt into a compressed string and returns to bwt.java
+
+src/java/test package           	- Contains Junit tests for each class
+TestDNAInputProvisioning.java		- Contains Junit tests for DNAInput types
+TestBWTCompression.java     		- Contains Junit tests for BWT compression 
+TestBWT.java						- Contains Junit tests for BWT 
+AppTest.java						- Contains Junit tests that an app will run
+
+PLANS**************************************************************
+Hook up to database
+Read from a website
+Generate a simple UI
+
+
+
+MAVEN**************************************************************
 This is a mavenized version of the BWT project.  To run unit tests:
 
    mvn test
@@ -15,3 +76,10 @@ To set up eclipse:
 1) Run "mvn test" - this ensures that the code "works"
 2) Run "mvn eclipse:eclipse" - this creates eclipse project 
 3) Import the project into eclipse.
+
+GIT**************************************************************
+
+
+
+Local path**************************************************************
+    /Users/martinschiller/Desktop/SchillerDrive/Computer/Gitprojects/BWT
